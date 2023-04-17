@@ -1,5 +1,6 @@
 import './App.css';
 import Clock from './modules/clock';
+import DateTime from './modules/date';
 
 function App() {
   return (
@@ -22,7 +23,7 @@ function App() {
     <div class="region fullscreen below"><div class="container"></div></div>
     <div class="region top bar">
       <div class="container"></div>
-      <div class="region top left"><Clock/></div>
+      <div class="region top left"><Clock/><DateTime/></div>
       <div class="region top center"><div class="container"></div></div>
       <div class="region top right"><div class="container"></div></div>
     </div>
