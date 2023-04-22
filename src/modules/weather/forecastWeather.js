@@ -9,6 +9,10 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import './weather.css';
 
+/**
+ * 
+ * @returns A list of the forecast from WeatherApi for the next REACT_APP_DAYS 
+ */
 function ForecastWeather() {
     const url = `https://api.weatherapi.com/v1/forecast.json?`
     const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
@@ -22,12 +26,15 @@ function ForecastWeather() {
             return parseForecastDays(data.forecast)
         })
         .then(weatherInfo => {
-            console.log(weatherInfo)
             setWeatherState({days: weatherInfo})
-            console.log(weather)
         })
     }, [])
 
+    /**
+     * 
+     * @param {String} url - The start of the url to query data from 
+     * @returns Json Object of the fetched data
+     */
     async function fetchData(url) {
         let data = await fetch(url+`key=${process.env.REACT_APP_WEATHER}&q=${process.env.REACT_APP_CITY}&days=3&aqi=no`)
         .then(response => {
@@ -42,11 +49,22 @@ function ForecastWeather() {
         return data
     }
 
+    /**
+     * 
+     * @param {Array} forecastArr - Json array of the weather for the next REACT_APP_DAYS
+     * @returns A new array of jsons with specific data kept 
+     */
     function parseForecastDays(forecastArr) {
         const mapped = forecastArr.forecastday.map((day) => parseDay(day))
         return mapped
     }
 
+    /**
+     * 
+     * @param {Json} data - Json object of the forecast containing current weather, upcoming weather, 
+     *                      and astrology related items
+     * @returns Json Object of important weather data
+     */
     function parseDay(data) {
         const date = new Date(data.date);
         let weatherInfo = {
@@ -75,15 +93,17 @@ function ForecastWeather() {
 
     function forecastToDiv(forecast) {
         let divList = [];
-        console.log(forecast)
         forecast.forEach((day) => {
-            console.log(day)
             divList.push(forecastDayToDiv(day))
         })
-        console.log(divList)
         return divList
     }
 
+    /**
+     * 
+     * @param {String} condition - Type of weather for a given day
+     * @returns Icon of corresponding weather conditions
+     */
     function getIcon(condition) {
         let lower = condition.toLowerCase();
         

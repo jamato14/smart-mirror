@@ -9,10 +9,10 @@ ul {
 }
 
 li.ForecastList {
-    font-size: 75%;
+    font-size: 100%;
 }
 
 p.CurrentWeather {
-    text-align: right;
+    text-align: center;
 }
 

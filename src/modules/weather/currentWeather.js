@@ -24,14 +24,9 @@ function CurrentWeather() {
     useEffect(() => {
         fetchData(url)
         .then(data => {
-            console.log(data)
-            // console.log(data)
-            // setWeather(data)
-            // console.log(weather)
             return parseData(data.current)
         })
         .then(weatherInfo => {
-            console.log(weatherInfo)
             setWeather(weatherInfo)
             return weatherInfo.condition
         })
@@ -40,6 +35,11 @@ function CurrentWeather() {
         })
     }, [])
 
+    /**
+     * 
+     * @param {String} url - Where to fetch data from 
+     * @returns Json object of data returned from query
+     */
     async function fetchData(url) {
         let data = await fetch(url+`key=${process.env.REACT_APP_WEATHER}&q=${process.env.REACT_APP_CITY}&aqi=no`)
         .then(response => {
@@ -54,6 +54,11 @@ function CurrentWeather() {
         return data
     }
 
+    /**
+     * 
+     * @param {Json} data - object of the forecast containing current weather
+     * @returns  Json Object of important weather data
+     */
     function parseData(data) {
         let weatherInfo = {
             "fahrenheit": Math.round(data.temp_f),
@@ -72,6 +77,11 @@ function CurrentWeather() {
         return str;
     }
 
+    /**
+     * 
+     * @param {String} condition Type of weather for a given day
+     * @returns Icon of corresponding weather conditions
+     */
     function getIcon(condition) {
         let lower = condition.toLowerCase();
         
