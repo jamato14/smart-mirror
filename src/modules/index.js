@@ -1,2 +1,4 @@
 import Clock from "./clock";
-import DateTime from "./date";
+import Date from "./date";
+import CurrentWeather from "./weather/currentWeather";
+import ForecastWeather from "./weather/forecastWeather";
