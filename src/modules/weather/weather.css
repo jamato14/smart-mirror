@@ -1,0 +1,18 @@
+
+div.ForecastTable {
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+    text-align: left;
+}
+
+li.ForecastList {
+    font-size: 100%;
+}
+
+p.CurrentWeather {
+    text-align: center;
+}
+

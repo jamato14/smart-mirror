@@ -1,6 +1,8 @@
 import './App.css';
 import Clock from './modules/clock';
 import DateTime from './modules/date';
+import CurrentWeather from './modules/weather/currentWeather';
+import ForecastWeather from './modules/weather/forecastWeather';
 
 function App() {
   return (
@@ -25,7 +27,7 @@ function App() {
       <div class="container"></div>
       <div class="region top left"><Clock/><DateTime/></div>
       <div class="region top center"><div class="container"></div></div>
-      <div class="region top right"><div class="container"></div></div>
+      <div class="region top right"><CurrentWeather/><ForecastWeather/></div>
     </div>
     <div class="region upper third"><div class="container"></div></div>
     <div class="region middle center"><div class="container"></div></div>
